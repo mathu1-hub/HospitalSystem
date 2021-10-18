@@ -49,6 +49,7 @@ public class EmployeeLoginServlet extends HttpServlet {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 
+		try {
 			Class.forName("com.mysql.jdbc.Driver");
 
 			// creating connection with the database
@@ -70,7 +71,9 @@ public class EmployeeLoginServlet extends HttpServlet {
 				// rd.forward(request, (ServletResponse) request);
 
 			}
-		
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 }
